@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, TextInput, FlatList, Image, ImageBackground} from 'react-native';
+import {
+  View,
+  TextInput,
+  FlatList,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import styles from './styles.StreamScreen';
 import {BackgroundView, Text} from '../../components/index';
 import AntIcon from 'react-native-vector-icons/AntDesign';
@@ -55,10 +62,12 @@ const StreamScreen = () => {
           paddingBottom: 30,
         }}>
         <View>
-          <Text>Live Games</Text>
+          <Text title>Live Games</Text>
         </View>
         <View>
-          <Text>View All</Text>
+          <TouchableOpacity>
+            <Text color={COLORS.lightPurple}>View All</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
