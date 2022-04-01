@@ -4,7 +4,14 @@ import {COLORS} from '../../themes/styles';
 
 export default class Text extends Component {
   render() {
-    const {color = COLORS.white, children, style, title, subTitle} = this.props;
+    const {
+      color = COLORS.white,
+      children,
+      style,
+      title,
+      subTitle,
+      fontNormal,
+    } = this.props;
     return (
       <RNText
         {...this.props}
@@ -12,6 +19,7 @@ export default class Text extends Component {
           style,
           title && styles.title,
           subTitle && styles.subTitle,
+          fontNormal && styles.fontNormal,
           {color},
         ]}>
         {children}
@@ -27,5 +35,8 @@ const styles = StyleSheet.create({
   subTitle: {
     fontSize: 12,
     opacity: 0.55,
+  },
+  fontNormal: {
+    fontSize: 18,
   },
 });

@@ -44,7 +44,7 @@ const StreamScreen = () => {
         </View>
       </View>
       <View style={styles.popularGameContainer}>
-        <Text>Popular Game</Text>
+        <Text color={COLORS.opacityWhite}>Popular Game</Text>
         <FlatList
           style={{flexGrow: 0, marginTop: 10}}
           horizontal
@@ -62,7 +62,9 @@ const StreamScreen = () => {
           paddingBottom: 30,
         }}>
         <View>
-          <Text title>Live Games</Text>
+          <Text title bold style={{fontSize: 16}}>
+            Live Games
+          </Text>
         </View>
         <View>
           <TouchableOpacity>
@@ -70,18 +72,50 @@ const StreamScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-
       <View style={styles.liveContainer}>
-        <FlatList
-          data={listGame}
-          ItemSeparatorComponent={() => <View style={{height: 20}} />}
-          renderItem={({item}) => (
-            <ImageBackground
-              style={styles.liveGameBanner}
-              source={{uri: item.preview[0]}}
-            />
-          )}
-        />
+        <View>
+          <FlatList
+            data={listGame}
+            ItemSeparatorComponent={() => (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  position: 'absolute',
+                  right: 10,
+                  top: 5,
+                }}>
+                <View
+                  style={{
+                    backgroundColor: COLORS.lightPurple,
+                    paddingHorizontal: 5,
+                    borderRadius: 5,
+                    marginRight: 5,
+                  }}>
+                  <Text title fontNormal>
+                    Alto's Odyssey
+                  </Text>
+                </View>
+
+                <View
+                  style={{
+                    backgroundColor: COLORS.lightRed,
+                    paddingHorizontal: 5,
+                    borderRadius: 5,
+                  }}>
+                  <Text title fontNormal>
+                    Live
+                  </Text>
+                </View>
+              </View>
+            )}
+            renderItem={({item}) => (
+              <ImageBackground
+                style={styles.liveGameBanner}
+                source={{uri: item.preview[0]}}
+              />
+            )}
+          />
+        </View>
       </View>
     </BackgroundView>
   );
