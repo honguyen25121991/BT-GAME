@@ -11,22 +11,10 @@ import {getRequestListGame} from '../../redux/thunk/gameThunkAction';
 import {getListGameSelector} from '../../redux/selectors/gameSelector';
 
 const StreamScreen = () => {
-  // const [listGame, setListGame] = useState([]);
   const dispatch = useDispatch();
   const listGame = useSelector(getListGameSelector);
 
   useEffect(() => {
-    // getListGame().then().catch()
-
-    // (async () => {
-    //   try {
-    //     const result = await getListGame();
-    //     setListGame(mapIP(result.data));
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // })();
-
     dispatch(getRequestListGame());
   }, []);
 
@@ -64,10 +52,10 @@ const StreamScreen = () => {
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddingVertical: 30,
+          paddingBottom: 30,
         }}>
         <View>
-          <Text>Live Games1</Text>
+          <Text>Live Games</Text>
         </View>
         <View>
           <Text>View All</Text>

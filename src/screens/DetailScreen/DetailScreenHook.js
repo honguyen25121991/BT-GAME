@@ -36,10 +36,6 @@ const DetailScreen = ({route, navigation}) => {
     dispatch(getRequestGameById(route.params.id));
   }, []);
 
-  // componentDidMount() {
-  //   this.props.getRequestGameById(this.props.route.params.id);
-  // }
-
   return (
     <BackgroundViewLoading edges={['bottom']} isFetching={isFetching}>
       {!!game.title && (
