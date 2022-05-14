@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
-
 import * as Yup from 'yup';
 import {iconApp} from '../../assets';
 import TextInput from '../../components/TextInput';
@@ -31,8 +30,22 @@ const validationSchema = Yup.object().shape({
 });
 
 export default class Register extends Component {
-  handleSubmit = values => {
-    console.log('handle submit', values);
+  handleSubmit = async values => {
+    if (true) {
+      console.log('handle submit', values);
+    }
+    try {
+      await axios({
+        method: 'POST',
+        url: 'http://svcy3.myclass.vn/api/Users/signup',
+        data: {initialValues, gender: true},
+      });
+      console.log(result);
+    } catch (err) {
+      if (err.message.includes('400')) {
+        Alert.alert('Email has is ');
+      }
+    }
   };
   render() {
     console.log(this.state);

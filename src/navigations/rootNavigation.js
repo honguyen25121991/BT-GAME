@@ -12,13 +12,12 @@ const RootNavigation = () => {
   };
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
-
       <Stack.Screen
         key={3}
         name={stackName.loginScreen}
         component={ScreenHook.LoginScreen}
       />
+      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
       <Stack.Screen
         key={4}
         name={stackName.registerScreen}

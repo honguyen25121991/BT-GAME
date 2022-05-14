@@ -1,14 +1,38 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  SafeAreaView,
+} from 'react-native';
 import {AccessToken, LoginButton} from 'react-native-fbsdk-next';
 import {iconApp} from '../../assets';
 import {TextInput} from '../../components/';
 import {COLORS} from '../../themes/styles';
+import {navigate} from '../../navigations/NavigationWithouProp';
+import {stackName} from '../../config/navigationConstants';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
 export default class Login extends Component {
+  state = {
+    email: '',
+  };
+  // componentDidMount() {
+  //   axios({url: 'http://svcy3.myclass.vn/api/Product', method: 'GET'})
+  //     .then(data => console.log('result', data))
+  //     .catch(err => console.log(err));
+  // }
+  handleLogin = () => {
+    // navigate(stackName.homeStack);
+    console.log('123');
+  };
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Welcome Shoes Store </Text>
         </View>
@@ -32,9 +56,7 @@ export default class Login extends Component {
           />
           <TouchableOpacity
             style={styles.bottomStyle}
-            onPress={() => {
-              console.log('123');
-            }}>
+            onPress={this.handleLogin}>
             <Text style={styles.loginText}>Login</Text>
           </TouchableOpacity>
           <View
@@ -61,14 +83,16 @@ export default class Login extends Component {
           </View>
         </View>
         <View style={styles.footer}>
-          <Text>Don't have an account</Text>
-          <Text
-            style={styles.footerBottomText}
-            onPress={() => this.props.navigation.navigate('RegisterScreen')}>
-            Register !
+          <Text>
+            Don't have an account {'  '}
+            <Text
+              style={styles.footerBottomText}
+              onPress={() => navigate(stackName.registerScreen)}>
+              Register !
+            </Text>
           </Text>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }

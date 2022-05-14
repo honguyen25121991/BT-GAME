@@ -86,7 +86,7 @@ const DetailScreenHook = ({navigation, route}) => {
           <View style={styles.downloadButton}>
             <TouchableOpacity
               onPress={() => {
-                navigate(tabName.downLoadTab);
+                navigate(tabName.streamTab);
               }}>
               <IconDownload
                 name="cloud-download"
