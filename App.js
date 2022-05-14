@@ -1,17 +1,21 @@
-import {NavigationContainer} from '@react-navigation/native';
-import React, {Component} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
-import RootNavigation, {navigationRef} from './src/navigation/root-navigation';
-import {store} from './src/redux/root-store';
+import store from './src/redux/rootStore';
+import {NavigationContainer} from '@react-navigation/native';
+import RootNavigation from './src/navigations/rootNavigation';
+import {navigationRef} from './src/navigations/NavigationWithouProp';
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <NavigationContainer ref={navigationRef}>
-          <RootNavigation />
-        </NavigationContainer>
-      </Provider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Provider store={store}>
+      <NavigationContainer ref={navigationRef}>
+        {/* <View style={{backgroundColor: 'red'}}>
+          <Text>Hien tai dang bao tri</Text>
+        </View> */}
+        <RootNavigation />
+      </NavigationContainer>
+    </Provider>
+  );
+};
+
+export default App;
