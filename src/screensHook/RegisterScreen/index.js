@@ -7,12 +7,14 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import * as Yup from 'yup';
 import {iconApp} from '../../assets';
 import TextInput from '../../components/TextInput';
 import {COLORS} from '../../themes/styles';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,24 +33,22 @@ const validationSchema = Yup.object().shape({
 
 export default class Register extends Component {
   handleSubmit = async values => {
-    if (true) {
-      console.log('handle submit', values);
+    if (values) {
+      Alert.alert('Suceess Full');
     }
     try {
       await axios({
         method: 'POST',
         url: 'http://svcy3.myclass.vn/api/Users/signup',
-        data: {initialValues, gender: true},
+        data: values,
       });
-      console.log(result);
     } catch (err) {
       if (err.message.includes('400')) {
-        Alert.alert('Email has is ');
+        Alert.alert('Email has been ');
       }
     }
   };
   render() {
-    console.log(this.state);
     return (
       <SafeAreaView style={styles.container}>
         <AntIcon
@@ -117,7 +117,6 @@ export default class Register extends Component {
                   onBlur={handleBlur('phone')}
                   touched={touched.phone}
                 />
-
                 <TouchableOpacity
                   style={styles.bottomStyle}
                   onPress={handleSubmit}>

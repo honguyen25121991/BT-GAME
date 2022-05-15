@@ -17,12 +17,13 @@ const RootNavigation = () => {
         name={stackName.loginScreen}
         component={ScreenHook.LoginScreen}
       />
-      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
       <Stack.Screen
         key={4}
         name={stackName.registerScreen}
         component={ScreenHook.RegisterScreen}
       />
+
+      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
 
       <Stack.Screen
         key={1}
