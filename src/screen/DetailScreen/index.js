@@ -17,7 +17,7 @@ import {requestGameDetail} from '../../redux/thunk/gameActionThunk';
 import {COLORS} from '../../themes/styles';
 import {sWidth} from '../../utils';
 
-const DetailScreenHook = ({navigation, route}) => {
+const DetailScreen = ({navigation, route}) => {
   const game = useSelector(state => state.gameReduces.game);
   const dispatch = useDispatch();
 
@@ -147,7 +147,7 @@ const DetailScreenHook = ({navigation, route}) => {
   );
 };
 
-export default DetailScreenHook;
+export default DetailScreen;
 
 const styles = StyleSheet.create({
   backButton: {

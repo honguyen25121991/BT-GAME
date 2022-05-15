@@ -5,7 +5,7 @@ import {BackgroundView, Text} from '../../components';
 import {COLORS} from '../../themes/styles';
 import {goBack} from '../../navigations/NavigationWithouProp';
 
-const UserScreenHook = () => {
+const UserScreen = () => {
   return (
     <BackgroundView>
       <TouchableOpacity style={styles.backButton} onPress={() => goBack()}>
@@ -15,7 +15,7 @@ const UserScreenHook = () => {
     </BackgroundView>
   );
 };
-export default UserScreenHook;
+export default UserScreen;
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',

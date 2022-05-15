@@ -1,11 +1,10 @@
 import {Text, View, StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Screen from '../../screens';
 import IconButton from 'react-native-vector-icons/Entypo';
 import {tabName} from '../../config/navigationConstants';
 import {COLORS} from '../../themes/styles';
-import ScreenHook from '../../screensHook';
+import Screen from '../../screen';
 
 const BottomTab = createBottomTabNavigator();
 const tabBarIcon = ({route: {name}, size, focused}) => {
@@ -34,21 +33,18 @@ const screenOptions = ({route}) => ({
 const HomeTab = () => {
   return (
     <BottomTab.Navigator screenOptions={screenOptions}>
-      <BottomTab.Screen
-        name={tabName.homeTab}
-        component={ScreenHook.HomeScreenHook}
-      />
+      <BottomTab.Screen name={tabName.homeTab} component={Screen.HomeScreen} />
       <BottomTab.Screen
         name={tabName.streamTab}
-        component={Screen.StreamScreens}
+        component={Screen.ProductScreen}
       />
       <BottomTab.Screen
         name={tabName.profileTab}
-        component={ScreenHook.ProfileScreenHook}
+        component={Screen.ProfileScreen}
       />
       <BottomTab.Screen
         name={tabName.mappingTab}
-        component={ScreenHook.MappingScreen}
+        component={Screen.MappingScreen}
       />
     </BottomTab.Navigator>
   );

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 import {AccessToken, LoginButton} from 'react-native-fbsdk-next';
 import {iconApp} from '../../assets';
@@ -13,23 +14,42 @@ import {TextInput} from '../../components/';
 import {COLORS} from '../../themes/styles';
 import {navigate} from '../../navigations/NavigationWithouProp';
 import {stackName} from '../../config/navigationConstants';
-import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {Formik} from 'formik';
 import axios from 'axios';
 
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .required('Không được bỏ trống')
+    .email('Email không hợp lệ'),
+  password: Yup.string()
+    .min(4, 'Mật khẩu tối thiểu có 4 kí tự')
+    .max(9, 'không được vượt quá 9 ki tu')
+    .required('Không được bỏ trống'),
+});
 export default class Login extends Component {
-  state = {
-    email: '',
+  login = () => {
+    console.log('suceesss');
+    navigate(stackName.homeStack);
   };
-  // componentDidMount() {
-  //   axios({url: 'http://svcy3.myclass.vn/api/Product', method: 'GET'})
-  //     .then(data => console.log('result', data))
-  //     .catch(err => console.log(err));
-  // }
-  handleLogin = () => {
-    // navigate(stackName.homeStack);
-    console.log('123');
+  handleSubmit = async values => {
+    if (values) {
+      // Alert.alert('Suceess Full');
+      this.login();
+    }
+    try {
+      await axios({
+        method: 'POST',
+        url: 'http://svcy3.myclass.vn/api/Users/signin',
+        data: values,
+      });
+    } catch (err) {
+      if (err.message.includes('400')) {
+        Alert.alert('Login Failed ');
+      }
+    }
   };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -46,19 +66,51 @@ export default class Login extends Component {
             }}>
             <Image source={iconApp} style={styles.avatar} />
           </View>
-          <TextInput title="Email" placeholder="email@gmail.com" emailIcon />
-          <TextInput
-            title="PassWord"
-            placeholder="*******"
-            secureTextEntry
-            password
-            passwordIcon
-          />
-          <TouchableOpacity
-            style={styles.bottomStyle}
-            onPress={this.handleLogin}>
-            <Text style={styles.loginText}>Login</Text>
-          </TouchableOpacity>
+          <Formik
+            validationSchema={validationSchema}
+            initialValues={{email: '', password: ''}}
+            onSubmit={this.handleSubmit}>
+            {({
+              values,
+              errors,
+              handleChange,
+              touched,
+              handleBlur,
+              handleSubmit,
+            }) => {
+              return (
+                <View style={styles.loginFrom}>
+                  <TextInput
+                    title="Email"
+                    placeholder="email@gmail.com"
+                    value={values.email}
+                    onChangeText={handleChange('email')}
+                    errorMessage={errors.email}
+                    onBlur={handleBlur('email')}
+                    touched={touched.email}
+                  />
+                  <TextInput
+                    title="PassWord"
+                    placeholder="*******"
+                    secureTextEntry
+                    password
+                    value={values.password}
+                    onChangeText={handleChange('password')}
+                    errorMessage={errors.password}
+                    onBlur={handleBlur('password')}
+                    touched={touched.password}
+                  />
+
+                  <TouchableOpacity
+                    style={styles.bottomStyle}
+                    onPress={handleSubmit}>
+                    <Text>Login</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          </Formik>
+
           <View
             style={{
               flex: 1,

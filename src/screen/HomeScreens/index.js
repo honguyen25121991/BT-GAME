@@ -14,7 +14,7 @@ import {navigate} from '../../navigations/NavigationWithouProp';
 import {requestListGame} from '../../redux/thunk/gameActionThunk';
 import GameItem from './components/GameItem';
 
-const HomeScreenHook = () => {
+const HomeScreen = () => {
   const listGame = useSelector(state => state.gameReduces.listGame);
   const dispatch = useDispatch();
   const LeftComponent = (
@@ -49,7 +49,7 @@ const HomeScreenHook = () => {
   );
 };
 
-export default HomeScreenHook;
+export default HomeScreen;
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
