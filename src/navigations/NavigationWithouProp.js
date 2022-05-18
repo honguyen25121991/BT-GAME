@@ -19,7 +19,6 @@ const navigationWithouProp = {
   },
 };
 
-// export const navigationwithouprop = new NavigationWithouProp();
 export const navigate = navigationWithouProp.navigate;
 export const goBack = navigationWithouProp.goBack;
 export const canGoBack = navigationWithouProp.canGoBack;

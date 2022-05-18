@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {Component} from 'react';
 import HomeTab from './Tab/HomeTab';
-import {stackName} from '../config/navigationConstants';
+import {stackName, tabName} from '../config/navigationConstants';
 import Screen from '../screen';
 const Stack = createNativeStackNavigator();
 
@@ -16,12 +16,18 @@ const RootNavigation = () => {
         name={stackName.loginScreen}
         component={Screen.LoginScreen}
       />
+      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
+
+      <Stack.Screen
+        name={tabName.productTab}
+        component={Screen.ProductScreen}
+      />
+
       <Stack.Screen
         key={4}
         name={stackName.registerScreen}
         component={Screen.RegisterScreen}
       />
-      <Stack.Screen name={stackName.homeStack} component={HomeTab} />
 
       <Stack.Screen
         key={1}

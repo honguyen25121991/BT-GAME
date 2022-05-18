@@ -15,12 +15,9 @@ import {requestListGame} from '../../redux/thunk/gameActionThunk';
 import GameItem from './components/GameItem';
 
 const HomeScreen = () => {
-  const listGame = useSelector(state => state.gameReduces.listGame);
-  const dispatch = useDispatch();
   const LeftComponent = (
     <View>
       <Text header>Hello , CyberSoft </Text>
-      <Text bold>Best games for today </Text>
     </View>
   );
   const onPressGoUser = () => {
@@ -32,19 +29,9 @@ const HomeScreen = () => {
     </TouchableOpacity>
   );
 
-  useEffect(() => {
-    dispatch(requestListGame());
-  }, []);
   return (
     <BackgroundView>
       <Header LeftComponent={LeftComponent} RightComponent={RightComponent} />
-      <FlatList
-        data={listGame}
-        renderItem={({item}) => <GameItem game={item} id={item.id} />}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{height: 70}} />}
-        contentContainerStyle={{paddingBottom: 70}}
-      />
     </BackgroundView>
   );
 };

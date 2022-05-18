@@ -11,7 +11,7 @@ const UserScreen = () => {
       <TouchableOpacity style={styles.backButton} onPress={() => goBack()}>
         <IconButton name="back" size={20} color={COLORS.opacityWhite} />
       </TouchableOpacity>
-      <Text>UserHook</Text>
+      <Text>User Screen</Text>
     </BackgroundView>
   );
 };

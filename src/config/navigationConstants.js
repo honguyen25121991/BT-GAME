@@ -7,7 +7,7 @@ const stackName = {
 };
 const tabName = {
   homeTab: 'HomeTab',
-  streamTab: 'StreamTab',
+  productTab: 'ProductTab',
   profileTab: 'ProfileTab',
   mappingTab: 'MappingTab',
 };

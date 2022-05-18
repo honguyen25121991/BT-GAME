@@ -6,23 +6,23 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import React, {Component} from 'react';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/AntDesign';
 import BackgroundViewProduct from './components/BackgruondView';
+import {goBack, navigate} from '../../navigations/NavigationWithouProp';
+import {stackName} from '../../config/navigationConstants';
 
 export default class ProductScreen extends Component {
-  // componentDidMount() {
-  //   fetch('http://svcy3.myclass.vn/api/Product')
-  //     .then(response => response.json())
-  //     .then(data => console.log('result', data))
-  //     .catch(err => console.error(err));
-  // }
-
   state = {
     listProduct: [],
     listCatelogy: [],
+  };
+
+  handlePress = () => {
+    console.log('123');
   };
   renderListCategory = () => {
     return this.state.listCatelogy.map(item => {
@@ -36,6 +36,7 @@ export default class ProductScreen extends Component {
       );
     });
   };
+
   renderItem = ({item}) => {
     return (
       <View style={styles.productItemContainer}>
@@ -56,8 +57,6 @@ export default class ProductScreen extends Component {
   };
 
   fetchAPI = async () => {
-    console.log('fetchAPI');
-
     const {
       data: {content: listCatelogy},
     } = await axios({
@@ -70,19 +69,6 @@ export default class ProductScreen extends Component {
       url: 'http://svcy3.myclass.vn/api/Product',
       method: 'GET',
     });
-
-    // const getListProduct = () =>
-    //   axios({
-    //     url: 'http://svcy3.myclass.vn/api/Product',
-    //     method: 'GET',
-    //   });
-    // const getListCatelogy = () =>
-    //   axios({
-    //     url: 'http://svcy3.myclass.vn/api/Product/getAllCategory',
-    //     method: 'GET',
-    //   });
-    // const listProduct = await getListProduct();
-    // const listCategory = await getListCatelogy();
     this.setState({listProduct, listCatelogy});
   };
 
@@ -95,8 +81,18 @@ export default class ProductScreen extends Component {
       <BackgroundViewProduct>
         <SafeAreaView style={styles.container}>
           <View style={styles.headerContainer}>
-            <Icon name="close" size={30} color="#fff" />
-            <Icon name="filter" size={30} color="#fff" />
+            <Icon
+              name="close"
+              size={30}
+              color="#fff"
+              onPress={() => navigate(stackName.homeStack)}
+            />
+            <Icon
+              name="filter"
+              size={30}
+              color="#fff"
+              onPress={() => goBack()}
+            />
           </View>
           <ScrollView
             style={{marginBottom: 20}}

@@ -10,7 +10,7 @@ const BottomTab = createBottomTabNavigator();
 const tabBarIcon = ({route: {name}, size, focused}) => {
   const icons = {
     HomeTab: 'home',
-    StreamTab: 'game-controller',
+    ProductTab: 'game-controller',
     ProfileTab: 'user',
     MappingTab: 'map',
   };
@@ -35,7 +35,7 @@ const HomeTab = () => {
     <BottomTab.Navigator screenOptions={screenOptions}>
       <BottomTab.Screen name={tabName.homeTab} component={Screen.HomeScreen} />
       <BottomTab.Screen
-        name={tabName.streamTab}
+        name={tabName.productTab}
         component={Screen.ProductScreen}
       />
       <BottomTab.Screen

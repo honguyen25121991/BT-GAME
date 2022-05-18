@@ -88,6 +88,7 @@ export default class Login extends Component {
                     errorMessage={errors.email}
                     onBlur={handleBlur('email')}
                     touched={touched.email}
+                    emailIcon
                   />
                   <TextInput
                     title="PassWord"
@@ -99,6 +100,7 @@ export default class Login extends Component {
                     errorMessage={errors.password}
                     onBlur={handleBlur('password')}
                     touched={touched.password}
+                    passwordIcon
                   />
 
                   <TouchableOpacity
