@@ -12,7 +12,6 @@ import {BackgroundView, Header, Text} from '../../components';
 import {stackName} from '../../config/navigationConstants';
 import {navigate} from '../../navigations/NavigationWithouProp';
 import {requestListGame} from '../../redux/thunk/gameActionThunk';
-import GameItem from './components/GameItem';
 
 const HomeScreen = () => {
   const LeftComponent = (

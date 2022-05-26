@@ -10,14 +10,7 @@ const ProfileScreens = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>Profile Screens</Text>
-      <Button title="Go map" onPress={gomap} />
-      <Button
-        title="Close"
-        onPress={() => {
-          goBack();
-        }}
-      />
+      <Text>Favorite Screen</Text>
     </View>
   );
 };
